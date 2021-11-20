@@ -37,7 +37,6 @@ export default function BookForm({ onSubmit }: Props) {
     const [searchString, setSearchString] = useState('');
     const [debouncedSearchString, isDebouncing] = useDebounce(searchString, 1000);
     const [locationSearchResults, clearSearchResults] = useGeocode(isDebouncing ? null : debouncedSearchString);
-    console.log({ locationSearchResults });
 
     const selectSuggestion = (result: GeocodeResult) => {
         dispatch({ type: "targetLocation", value: result.geometry.location as Location });
