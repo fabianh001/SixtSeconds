@@ -1,12 +1,12 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Vehicle, VehicleType } from "../types/Vehicle";
+import { VehicleType, VehicleWithOffer } from "../types/Vehicle";
 import CarOption from "./CarOption";
 
 type Props = {
   onReturn: () => void;
-  availableVehicles: Vehicle[];
-  onSelect: (vehicle: Vehicle) => void;
+  availableVehicles: VehicleWithOffer[];
+  onSelect: (vehicle: VehicleWithOffer) => void;
 }
 
 const vehicleTypeList = [VehicleType.BMW, VehicleType.TESLA, VehicleType.WAYMO];
@@ -23,7 +23,7 @@ export default function SecondPage({ availableVehicles, onReturn, onSelect }: Pr
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
           <span className="text-xl">
-              <b className="">Select your car</b>
+              <b>Select your car</b>
           </span>
       </div>
       <div className="overflow-y-auto flex flex-col gap-2">
@@ -33,6 +33,7 @@ export default function SecondPage({ availableVehicles, onReturn, onSelect }: Pr
               key={vehicle.vehicleID} 
               onSelect={() => onSelect(vehicle)}
               carModel={randomVehicleType[i]}
+              price={vehicle.price}
             />
           ))
         }

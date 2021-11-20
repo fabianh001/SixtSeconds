@@ -2,12 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import InsuranceOfferTile from "./InsuranceOfferTile";
 import { useState } from "react";
+import { VehicleWithOffer } from "../types/Vehicle";
 
 type Props = {
   onReturn: () => void;
   onConfirm: () => void;
+  selectedVehicle: VehicleWithOffer | null,
 }
-export default function ThirdPage({ onReturn, onConfirm }: Props) {
+export default function ThirdPage({ selectedVehicle, onReturn, onConfirm }: Props) {
   const [insurancePrice, setInsurancePrice] = useState(0);
   const selectInsurance = (price: number) => () => {
     if (insurancePrice === price) {
@@ -63,7 +65,7 @@ export default function ThirdPage({ onReturn, onConfirm }: Props) {
     
       <div className="flex justify-end items-center gap-4">
         Total:
-        <div className="rounded-box text-4xl font-bold text-success">{ 40 + insurancePrice }€</div>
+        <div className="rounded-box text-4xl font-bold text-success">{ selectedVehicle?.price ?? 0 + insurancePrice }€</div>
       </div>
       <button onClick={onConfirm} className="btn btn-block btn-warning">Order now!</button>
     </div>

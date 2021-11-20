@@ -56,8 +56,8 @@ export default function BookForm({ onSubmit }: Props) {
     };
 
     return (
-        <form onSubmit={onSubmitBooking} className="grid grid-cols-6 gap-2 w-full h-full">
-            <div className="max-h-16 relative px-2 col-span-full flex items-center gap-2">
+        <form onSubmit={onSubmitBooking} className="flex flex-col gap-2 w-full h-full">
+            <div className="max-h-16 relative px-2 flex items-center gap-2">
                 <FontAwesomeIcon icon={faSearch} className="text-lg opacity-70" />
                 <input 
                     value={searchString}
@@ -80,24 +80,14 @@ export default function BookForm({ onSubmit }: Props) {
                         </div>
                 )}
             </div>
-            <div className="h-min form-control col-span-3">
+            <div className="h-min form-control">
                 <label className="label">
                     <span className="label-text">Preferred pickup time</span>
                 </label> 
                 <input type="time" placeholder="time" className="input input-bordered"></input>
             </div>
-            {/* <div className="h-min form-control col-span-3">
-                <label className="label">
-                    <span className="label-text">Vehicle type</span>
-                </label> 
-                <select className="input input-bordered">
-                    <option>Tesla Modeel 3</option>
-                    <option>BMW i3</option>
-                    <option>Waymo Autonomous</option>
-                </select>
-            </div> */}
-            <div className="flex-1 col-span-full h-full" />
-            <button type="submit" className="btn btn-warning col-span-full">
+            <div className="flex-1 h-full" />
+            <button type="submit" className="btn btn-warning">
                 Search
             </button>
         </form>
