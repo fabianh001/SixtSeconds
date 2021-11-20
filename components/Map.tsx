@@ -5,6 +5,7 @@ import useCurrentLocation from "../hooks/useCurrentLocation";
 import { useVehicles } from "../domain/sixt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
+import { mapOption } from "../constants/mapOptions";
 export enum MapDisplayMode {
     CAR_LOCATION,
 }
@@ -25,6 +26,7 @@ export default function Map() {
                     lat: location?.[0] ?? defaultLocation.lat,
                     lng: location?.[1] ?? defaultLocation.lng
                 }}
+                options={mapOption}
                 defaultZoom={11}
             >
                 {
