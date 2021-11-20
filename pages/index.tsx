@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Map from '../components/Map';
 import MainPanel from '../components/MainPanel';
+import SecondPage from '../components/SecondPage';
+import ThirdPage from '../components/ThirdPage';
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +16,13 @@ const Home: NextPage = () => {
       <Header />
       <div className="relative flex flex-col flex-1">
         <Map />
+        <ThirdPage/>
         <MainPanel />
+        
+       
+        
+        
+        
       </div>
     </div>
   )
