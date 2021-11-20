@@ -108,7 +108,7 @@ export default function BookForm({ onSubmit }: Props) {
               type="time"
               placeholder="time"
               className="input input-bordered "
-              onBeforeInputCapture={() => setHasTime(true)}
+              onFocusCapture={() => setHasTime(true)}
             ></input>
           </div>
           <div className="flex-1 h-full" />
