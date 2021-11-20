@@ -16,7 +16,7 @@ enum Page {
     CONFIRMATION
 }
 
-type VehicleWithOffer = Vehicle & {
+export type VehicleWithOffer = Vehicle & {
     price: number;
 }
 export default function MainPanel() {

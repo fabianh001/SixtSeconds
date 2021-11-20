@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import InsuranceOfferTile from "./InsuranceOfferTile";
 import { useState } from "react";
-import { VehicleWithOffer } from "../types/Vehicle";
+import { VehicleWithOffer } from "./MainPanel";
+
 
 type Props = {
   onReturn: () => void;
@@ -62,8 +63,10 @@ export default function ThirdPage({ selectedVehicle, onReturn, onConfirm }: Prop
           },
         ]}/>
       </div>
-    
-      <div className="flex justify-end items-center gap-4">
+      <span className=" font-bold text-2xl pt-2 mt-12 mb-2 ml-8">
+            Expected travel time: <b className="text-warning">10 minutes</b>
+          </span>
+      <div className="flex justify-end items-center gap-4 font-bold">
         Total:
         <div className="rounded-box text-4xl font-bold text-success">{ selectedVehicle?.price ?? 0 + insurancePrice }€</div>
       </div>
