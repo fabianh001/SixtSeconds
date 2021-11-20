@@ -2,7 +2,7 @@
 
 module.exports = {
   target: "serverless",
-  reactStrictMode: true,
+  reactStrictMode: false,
   async rewrites() {
     return [
       {
