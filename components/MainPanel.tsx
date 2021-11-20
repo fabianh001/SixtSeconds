@@ -27,8 +27,14 @@ export default function MainPanel() {
     const onBookingFormSubmit = (request: BookingRequest) => {
         setBookingRequest(request);    
         setPage(Page.VEHICLE_SELECTION);
-        const vehiclesInProximity = vehicles?.filter(vehicle => vehicle.status === "FREE" && 5 >= distanceFromLatLng(vehicle, { lat: location?.[0] ?? 0, lng: location?.[1] ?? 0})) ?? []
-        console.log({ vehiclesInProximity });
+        const vehiclesInProximity = vehicles
+            ?.filter(vehicle => vehicle.status === "FREE" && vehicle.charge > 50)
+            .sort((a, b) => {
+                const currentLocationInLatLng = { lat: location?.[0] ?? 0, lng: location?.[1] ?? 0 };
+                return distanceFromLatLng(a, currentLocationInLatLng) - distanceFromLatLng(b, currentLocationInLatLng)
+            }) 
+            ?? [];
+        console.log({vehiclesInProximity})
         setVehiclesAvailable(vehiclesInProximity);
     };
 
@@ -53,7 +59,7 @@ export default function MainPanel() {
     }
 
     return (
-        <div className='z-10 -mt-6 p-4 flex-shrink h-36 bg-base-100 rounded-t-3xl shadow-lg flex-1 flex flex-col items-stretch'>
+        <div className='z-10 -mt-6 p-4 flex-shrink h-1/3 bg-base-100 rounded-t-3xl shadow-lg flex-1 flex flex-col items-stretch'>
             {page === Page.BOOKING_FORM &&  <BookForm onSubmit={onBookingFormSubmit} /> }
             {page === Page.VEHICLE_SELECTION && (
                 <SecondPage
@@ -62,7 +68,7 @@ export default function MainPanel() {
                     onReturn={onReturn}
                 />
             )}
-            {page === Page.INSURANCE_SELECTION &&  <ThirdPage /> }
+            {page === Page.INSURANCE_SELECTION &&  <ThirdPage onReturn={onReturn} /> }
         </div>
     )
 }

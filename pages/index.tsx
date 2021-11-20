@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <meta name="description" content="SixtSeconds to destination!" />
       </Head>
       <Header />
-      <div className="flex flex-col flex-1">
+      <div className="flex max-h-full flex-col flex-1">
         <Map />
         <MainPanel />
       </div>

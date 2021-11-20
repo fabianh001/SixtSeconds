@@ -1,12 +1,19 @@
-export default function ThirdPage() {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
+type Props = {
+  onReturn: () => void;
+}
+export default function ThirdPage({ onReturn }: Props) {
   return (
-    <>
-      <div className=" rounded-box shadow-xl mr-2 ml-2 mt-5 mb-5 h-20">
-        <div className="px-2 h-12 items-center justify-between flex flex-col mb-4">
-          <span className="text-lg">
-            <b className="">Select an in-time insurance with your booking</b>{" "}
+    <div className="h-full flex flex-col items-stretch gap-2">
+      <div className="h-12 flex items-center gap-1">
+        <button type="button" onClick={onReturn} className="btn btn-ghost">
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+          <span className="text-xl">
+              <b className="">Insurance Options</b>
           </span>
-        </div>
       </div>
 
       {/* Checkboxes */}
@@ -58,6 +65,6 @@ export default function ThirdPage() {
 
       <div className="rounded-box shadow-xl">Total: 43€</div>
       <button className="btn btn-block">Order now!</button>
-    </>
+    </div>
   );
 }
