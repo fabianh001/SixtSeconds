@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import GoogleMapReact from 'google-map-react';
 import useCurrentLocation from "../hooks/useCurrentLocation";
 import { useVehicles } from "../domain/sixt";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { mapOption } from "../constants/mapOptions";
+import CarMapMarker from "./CarMapMarker";
 export enum MapDisplayMode {
     CAR_LOCATION,
 }
@@ -32,9 +31,7 @@ export default function Map() {
             >
                 {
                     vehicles?.map(vehicle => (
-                        <div className="rounded-full flex items-center justify-center bg-warning text-white h-8 w-8" key={vehicle.vehicleID} lat={vehicle.lat} lng={vehicle.lng}>
-                            <FontAwesomeIcon icon={faCar} />
-                        </div>
+                        <CarMapMarker key={vehicle.vehicleID} lat={vehicle.lat} lng={vehicle.lng} />
                     ))
                 }
             </GoogleMapReact>
