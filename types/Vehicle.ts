@@ -5,3 +5,8 @@ export type Vehicle = {
     status: "FREE" | "BOOKED",
     vehicleID: string;
 }
+export enum VehicleType {
+    TESLA = "Tesla Model 3",
+    BMW = "BMW i3",
+    WAYMO = "Waymo Autonomous",
+}

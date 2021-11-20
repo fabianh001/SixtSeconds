@@ -20,6 +20,7 @@ export default function Map() {
     return (
         <div className="w-full h-1/2 bg-primary">
             <GoogleMapReact
+                yesIWantToUseGoogleMapApiInternals
                 bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY as string }}
                 defaultCenter={defaultLocation}
                 center={{
