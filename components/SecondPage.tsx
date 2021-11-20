@@ -1,11 +1,16 @@
 export default function SecondPage() {
-  return (
-    <>
-      <span className="text-lg mt-4 mb-5">
-        <b className="text-warning">Select your car</b>
-      </span>
+  return (<>
+    
+    <div className="px-5 h-12 flex items-center justify-between">
+            <span className="text-xl">
+                <b className="">Select your car</b>
+            </span>
+        </div>
+        
+    <div className="overflow-y-auto h-96  ">
+      
 
-      <div className="card bordered mr-5 ml-5">
+      <div className="card bordered  ml-5 shadow-xl mb-2 w-2/3">
         <figure>
           <img src="https://emoove.net/wp-content/uploads/2018/12/Waymo-Autonom-Auto-Autonom-Taxi-waymo-one-home_car_firefly.png"/> </figure>
         <div className="card-body">
@@ -24,7 +29,9 @@ export default function SecondPage() {
         </div>
       </div>
 
-      <div className="card bordered mr-5 ml-5 mb-20">
+   
+
+      <div className="card bordered mr-5 ml-5 mb-20 shadow-xl mb-2 w-2/3">
         <figure>
           <img src="https://t3n.de/news/wp-content/uploads/2020/10/tesla-model-3-teaser.jpg" />
         </figure>
@@ -44,13 +51,13 @@ export default function SecondPage() {
         </div>
       </div>
 
-      <div className="card bordered mr-5 ml-5">
+      <div className="card bordered mr-5 ml-5 shadow-xl mb-2 w-2/3">
         <figure>
           <img src="https://img.cargate360.de/default.aspx?vid=5568550&bid=1359&format=xl&ino=4&App=Euler-Group-Bmw" />
         </figure>
         <div className="card-body">
           <span className="text-lg">
-            <b className="text-warning">Tesla</b> Model 3
+            <b className="text-warning">BMW</b> i3
           </span>
           <span className="text-md">
             Available in <b className="text-error">5 min</b>
@@ -63,6 +70,7 @@ export default function SecondPage() {
           </div>
         </div>
       </div>
+    </div>
     </>
   );
 }
