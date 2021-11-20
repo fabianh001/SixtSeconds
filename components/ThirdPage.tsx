@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import InsuranceOfferTile from "./InsuranceOfferTile";
 import { useState } from "react";
-import { VehicleWithOffer } from "./MainPanel";
+import { VehicleWithOffer } from "../types/Vehicle"
 
 
 type Props = {
