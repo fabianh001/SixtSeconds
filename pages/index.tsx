@@ -15,8 +15,11 @@ const Home: NextPage = () => {
       <Header />
       <div className="relative flex flex-col flex-1">
         <Map />
-        <MainPanel />
         <SecondPage/>
+        <MainPanel />
+        
+       
+        
         
         
       </div>
