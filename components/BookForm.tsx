@@ -64,7 +64,7 @@ export default function BookForm({ onSubmit }: Props) {
                     value={searchString}
                     onChange={e => setSearchString(e.target.value)}
                     type="text" 
-                    placeholder="Places you want to go" 
+                    placeholder="Where do you want to go?" 
                     className="rounded-full flex-1 input bg-base-200" />
                 {
                     locationSearchResults.length > 0 && (
@@ -87,7 +87,7 @@ export default function BookForm({ onSubmit }: Props) {
                 </label> 
                 <input type="time" placeholder="time" className="input input-bordered"></input>
             </div>
-            <div className="h-min form-control col-span-3">
+            {/* <div className="h-min form-control col-span-3">
                 <label className="label">
                     <span className="label-text">Vehicle type</span>
                 </label> 
@@ -96,7 +96,7 @@ export default function BookForm({ onSubmit }: Props) {
                     <option>BMW i3</option>
                     <option>Waymo Autonomous</option>
                 </select>
-            </div>
+            </div> */}
             <div className="flex-1 col-span-full h-full" />
             <button type="submit" className="btn btn-warning col-span-full">
                 Search

@@ -54,7 +54,10 @@ export default function CarOption({ carModel, onSelect }: Props) {
             <b className="text-warning">{texts.brand}</b> {texts.model}
           </span>
           <span className="text-sm leading-3">
-            Available in <b className="text-error">{texts.available} min</b>
+            Arrives in{" "}
+            <b className="text-error ">
+              <span className="blink_me">{texts.available}</span> min{" "}
+            </b>
           </span>
         </div>
         <div className="text-xl leading-3 mr-5">
