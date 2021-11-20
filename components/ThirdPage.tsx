@@ -1,10 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import InsuranceOfferTile from "./InsuranceOfferTile";
+import { useState } from "react";
 
 type Props = {
   onReturn: () => void;
+  onConfirm: () => void;
 }
-export default function ThirdPage({ onReturn }: Props) {
+export default function ThirdPage({ onReturn, onConfirm }: Props) {
+  const [insurancePrice, setInsurancePrice] = useState(0);
+  const selectInsurance = (price: number) => () => {
+    if (insurancePrice === price) {
+      setInsurancePrice(0);
+      return;
+    }
+    setInsurancePrice(price);
+  }
   return (
     <div className="h-full flex flex-col items-stretch gap-2">
       <div className="h-12 flex items-center gap-1">
@@ -17,54 +28,44 @@ export default function ThirdPage({ onReturn }: Props) {
       </div>
 
       {/* Checkboxes */}
-
-      <div className="flex ">
-        <div className="collapse w-96 border rounded-box border-base-300 collapse-arrow m-2">
-          <input type="checkbox" />
-          <div className="collapse-title text-xl">
-            <div className="px-2 h-12 flex items-center justify-between">
-              <span className="text-xl font-medium">
-                Select car with
-                <b className="text-warning"> 100%</b> in-time insurance
-              </span>
-            </div>
-          </div>
-          <div className="collapse-content">
-            <ul className="menu">
-              <li className="menu-title"></li>
-              <li>Car will arrive exactly at 14:45</li>
-              <li>You will arrive at 15:15 </li>
-              <li>You get 100% refund if the car is too late</li>
-            </ul>
-            <button className="btn btn-block">Add now for 3€</button>
-          </div>
-        </div>
-
-        <div className="collapse w-96 border rounded-box border-base-300 collapse-arrow m-2">
-          <input type="checkbox" />
-          <div className="collapse-title ">
-          <div className="px-2 h-12 flex items-center justify-between">
-              <span className="text-xl font-medium">
-                Select car with
-                <b className="text-warning"> 50%</b> in-time insurance
-              </span>
-            </div>
-          </div>
-          <div className="collapse-content">
-            <p>
-              Collapse content reveals with focus. If you add a checkbox, you
-              can control it using checkbox instead of focus. Or you can
-              force-open/force-close using
-              <span className="badge badge-outline">collapse-open</span> and
-              <span className="badge badge-outline">collapse-close</span>{" "}
-              classes.
-            </p>
-          </div>
-        </div>
+      <div className="flex flex-col gap-2 flex-1 flex-shrink-0 overflow-auto">
+        <InsuranceOfferTile onSelect={selectInsurance(2)} selected={insurancePrice === 2} title="Basic Coverage" price={2} insuranceItems={[
+          {
+            delay: 60,
+            refundPercentage: 50
+          }
+        ]}/>
+        <InsuranceOfferTile onSelect={selectInsurance(5)} selected={insurancePrice === 5} title="Advance Coverage" price={5} insuranceItems={[
+          {
+            delay: 60,
+            refundPercentage: 75
+          },
+          {
+            delay: 30,
+            refundPercentage: 50
+          },
+        ]}/>
+        <InsuranceOfferTile onSelect={selectInsurance(10)} selected={insurancePrice === 10} title="Ultimate Coverage" price={10} insuranceItems={[
+          {
+            delay: 60,
+            refundPercentage: 100
+          },
+          {
+            delay: 30,
+            refundPercentage: 75
+          },
+          {
+            delay: 15,
+            refundPercentage: 25
+          },
+        ]}/>
       </div>
-
-      <div className="rounded-box shadow-xl">Total: 43€</div>
-      <button className="btn btn-block">Order now!</button>
+    
+      <div className="flex justify-end items-center gap-4">
+        Total:
+        <div className="rounded-box text-4xl font-bold text-success">{ 40 + insurancePrice }€</div>
+      </div>
+      <button onClick={onConfirm} className="btn btn-block btn-warning">Order now!</button>
     </div>
   );
 }
