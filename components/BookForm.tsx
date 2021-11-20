@@ -58,7 +58,7 @@ export default function BookForm({ onSubmit }: Props) {
     return (
         <form onSubmit={onSubmitBooking} className="flex flex-col gap-2 w-full h-full">
             <div className="max-h-16 relative px-2 flex items-center gap-2">
-                <FontAwesomeIcon icon={faSearch} className="text-lg opacity-70" />
+                <FontAwesomeIcon icon={faSearch} className="text-3xl opacity-70" />
                 <input 
                     value={searchString}
                     onChange={e => setSearchString(e.target.value)}
