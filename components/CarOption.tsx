@@ -16,6 +16,7 @@ type Texts = {
   img: string;
   price: string;
 };
+
 const TEXTS_RECORD: Record<VehicleType, Texts> = {
   [VehicleType.BMW]: {
     brand: "Moovit",
@@ -42,7 +43,7 @@ export default function CarOption({ carModel, onSelect }: Props) {
 
   return (
     <div className="flex items-center gap-2">
-      <div className="flex bg-base-200 flex-1 rounded-lg px-2 py-4 items-center bordered shadow-xl gap-2">
+      <div className="flex bg-base-200 flex-1  rounded-lg px-2 py-4 items-center bordered shadow-xl gap-2">
         <img src={texts.img} className="h-12 w-1/5" />
         <div className="flex flex-1 flex-col gap-1">
           <span className="text-lg font-bold">
@@ -51,9 +52,9 @@ export default function CarOption({ carModel, onSelect }: Props) {
           <span className="text-sm leading-3">
             Available in <b className="text-error">5 min</b>
           </span>
-          <span className="text-sm leading-3">
-            <b className="text-error">{texts.price}</b>
-          </span>
+        </div>
+        <div className="text-xl leading-3 mr-5">
+          <b className="text-success">{texts.price}</b>
         </div>
       </div>
       <div>
