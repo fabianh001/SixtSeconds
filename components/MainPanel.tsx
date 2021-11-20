@@ -3,7 +3,7 @@ import { useVehicles } from '../domain/sixt';
 import useCurrentLocation from '../hooks/useCurrentLocation';
 import { BookingRequest } from '../types/BookingRequest';
 import { Vehicle } from '../types/Vehicle';
-import { distanceFromLatLng } from '../utils';
+import { distanceFromLatLng, randomNumber } from '../utils';
 import BookForm from './BookForm';
 import SecondPage from './SecondPage';
 import ThankyouPage from './ThankYouPage';
@@ -15,12 +15,16 @@ enum Page {
     INSURANCE_SELECTION,
     CONFIRMATION
 }
+
+type VehicleWithOffer = Vehicle & {
+    price: number;
+}
 export default function MainPanel() {
     const [page, setPage] = useState<Page>(Page.BOOKING_FORM);
 
     const [bookingRequest, setBookingRequest] = useState<BookingRequest | null>(null);
-    const [vehiclesAvailable, setVehiclesAvailable] = useState<Vehicle[]>([]);
-    const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
+    const [vehiclesAvailable, setVehiclesAvailable] = useState<VehicleWithOffer[]>([]);
+    const [selectedVehicle, setSelectedVehicle] = useState<VehicleWithOffer | null>(null);
     
     const vehicles = useVehicles();
     const location = useCurrentLocation();
@@ -33,13 +37,16 @@ export default function MainPanel() {
             .sort((a, b) => {
                 const currentLocationInLatLng = { lat: location?.[0] ?? 0, lng: location?.[1] ?? 0 };
                 return distanceFromLatLng(a, currentLocationInLatLng) - distanceFromLatLng(b, currentLocationInLatLng)
-            }) 
+            })
+            .map((vehicle, i) => ({
+                ...vehicle,
+                price: 20 + (10 + randomNumber({ low: 2, high: 6, float: false })) * i,
+            }))
             ?? [];
-        console.log({vehiclesInProximity})
         setVehiclesAvailable(vehiclesInProximity);
     };
 
-    const onVehicleSelected = (vehicle: Vehicle) => {
+    const onVehicleSelected = (vehicle: VehicleWithOffer) => {
         setSelectedVehicle(vehicle);
         setPage(Page.INSURANCE_SELECTION);
     }
@@ -78,7 +85,7 @@ export default function MainPanel() {
                     onReturn={onReturn}
                 />
             )}
-            {page === Page.INSURANCE_SELECTION &&  <ThirdPage onConfirm={confirmOrder} onReturn={onReturn} /> }
+            {page === Page.INSURANCE_SELECTION &&  <ThirdPage onConfirm={confirmOrder} onReturn={onReturn} selectedVehicle={selectedVehicle} /> }
             {page === Page.CONFIRMATION &&  <ThankyouPage onReturn={onReturn} /> }
         </div>
     )

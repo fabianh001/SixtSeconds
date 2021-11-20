@@ -8,13 +8,13 @@ import { VehicleType } from "../types/Vehicle";
 type Props = {
   carModel: VehicleType;
   onSelect: () => void;
+  price: number;
 };
 
 type Texts = {
   brand: string;
   model: string;
   img: string;
-  price: string;
   available: string;
 };
 
@@ -23,26 +23,23 @@ const TEXTS_RECORD: Record<VehicleType, Texts> = {
     brand: "Moovit",
     model: "AV",
     img: "/img/Mobileye_Robotaxi_-_Sixt_App_cut.png",
-    price: "10€",
     available: "5",
   },
   [VehicleType.TESLA]: {
     brand: "Tesla",
     model: "Model 3",
     img: "https://im-efahrer.chip.de/files/601023154b2b8-tesla-model-3-front.png?imPolicy=IfOrientation&width=1200&height=630&color=%23000000&hash=051ebff6b28d649a0a6a1d6d49cb73b2a11ada7cc94dc65964ff6813817ff7b2",
-    price: "11€",
     available: "2",
   },
   [VehicleType.WAYMO]: {
     brand: "GTA",
     model: "Autonomous Shuttle",
     img: "/img/Vortex-GTASA-front.png",
-    price: "12€",
     available: "3",
   },
 };
 
-export default function CarOption({ carModel, onSelect }: Props) {
+export default function CarOption({ price, carModel, onSelect }: Props) {
   const texts = TEXTS_RECORD[carModel];
 
   return (
@@ -61,7 +58,7 @@ export default function CarOption({ carModel, onSelect }: Props) {
           </span>
         </div>
         <div className="text-xl leading-3 mr-5">
-          <b className="text-success">{texts.price}</b>
+          <b className="text-success">{price}€</b>
         </div>
       </div>
       <div>

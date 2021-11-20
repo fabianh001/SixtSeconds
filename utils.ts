@@ -21,3 +21,9 @@ export const distanceFromLatLng = (a: Point, b: Point) => {
   const d = R * c; // Distance in km
   return d;
 }
+
+
+export const randomNumber = ({ low = 0, high, float = false }: { float: boolean, low: number, high: number }) => {
+    const seed = Math.random() * (high - low) + low;
+    return float ? seed : Math.round(seed);
+}

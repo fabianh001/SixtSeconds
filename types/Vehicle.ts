@@ -10,3 +10,7 @@ export enum VehicleType {
     BMW = "BMW i3",
     WAYMO = "Waymo Autonomous",
 }
+
+export type VehicleWithOffer = Vehicle & {
+    price: number;
+}
