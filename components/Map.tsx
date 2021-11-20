@@ -18,7 +18,7 @@ export default function Map() {
     const location = useCurrentLocation();
     const vehicles = useVehicles(vehicle => vehicle.status === 'FREE' && vehicle.charge >= 50);
     return (
-        <div className="w-full h-1/2 bg-primary">
+        <div className="w-full h-1/3 bg-primary">
             <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY as string }}
                 defaultCenter={defaultLocation}

@@ -1,5 +1,5 @@
 export default function SecondPage() {
-  return (<>
+  return (<div className="h-2/3">
     
     <div className="px-5 h-12 flex items-center justify-between">
             <span className="text-xl">
@@ -10,12 +10,12 @@ export default function SecondPage() {
     <div className="overflow-y-auto h-96  ">
       
 
-      <div className="card bordered  ml-5 shadow-xl mb-2 w-2/3">
+      <div className="card bordered  ml-5 shadow-xl mb-5 w-2/3">
         <figure>
           <img src="https://emoove.net/wp-content/uploads/2018/12/Waymo-Autonom-Auto-Autonom-Taxi-waymo-one-home_car_firefly.png"/> </figure>
         <div className="card-body">
           <span className="text-lg">
-            <b className="text-warning">Tesla</b> Model 3
+            <b className="text-warning">Waymo</b> Autonomous
           </span>
           <span className="text-md">
             Available in <b className="text-error">5 min</b>
@@ -31,7 +31,7 @@ export default function SecondPage() {
 
    
 
-      <div className="card bordered mr-5 ml-5 mb-20 shadow-xl mb-2 w-2/3">
+      <div className="card bordered mr-5 ml-5 mb-5 shadow-xl mb-2 w-2/3">
         <figure>
           <img src="https://t3n.de/news/wp-content/uploads/2020/10/tesla-model-3-teaser.jpg" />
         </figure>
@@ -71,6 +71,6 @@ export default function SecondPage() {
         </div>
       </div>
     </div>
-    </>
+    </div>
   );
 }
