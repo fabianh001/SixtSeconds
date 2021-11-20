@@ -1,12 +1,21 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { VehicleType } from "../types/Vehicle";
+import { Vehicle, VehicleType } from "../types/Vehicle";
 import CarOption from "./CarOption";
 
 type Props = {
   onReturn: () => void;
+  availableVehicles: Vehicle[];
+  onSelect: (vehicle: Vehicle) => void;
 }
-export default function SecondPage({ onReturn }: Props) {
+
+const vehicleTypeList = [VehicleType.BMW, VehicleType.TESLA, VehicleType.WAYMO];
+
+export default function SecondPage({ availableVehicles, onReturn, onSelect }: Props) {
+  const randomVehicleType = availableVehicles.map(_ => {
+    const randomInt = Math.round(Math.random() * 100);
+    return vehicleTypeList[randomInt % vehicleTypeList.length];
+  });
   return (
     <div className="h-full flex flex-col items-stretch gap-2">
       <div className="h-12 flex items-center gap-1">
@@ -18,9 +27,15 @@ export default function SecondPage({ onReturn }: Props) {
           </span>
       </div>
       <div className="overflow-y-auto flex flex-col gap-2">
-        <CarOption onSelect={console.log} carModel={VehicleType.WAYMO} />
-        <CarOption onSelect={console.log} carModel={VehicleType.TESLA} />
-        <CarOption onSelect={console.log} carModel={VehicleType.BMW} />
+        {
+          availableVehicles.map((vehicle, i) => (
+            <CarOption 
+              key={vehicle.vehicleID} 
+              onSelect={() => onSelect(vehicle)}
+              carModel={randomVehicleType[i]}
+            />
+          ))
+        }
       </div>
     </div>
   );
