@@ -58,13 +58,13 @@ export default function BookForm({ onSubmit }: Props) {
     return (
         <form onSubmit={onSubmitBooking} className="grid grid-cols-6 gap-2 w-full h-full">
             <div className="max-h-16 relative px-2 col-span-full flex items-center gap-2">
-                <FontAwesomeIcon icon={faSearch} className="text-lg opacity-70" />
+                <FontAwesomeIcon icon={faSearch} className="text-3xl opacity-70" />
                 <input 
                     value={searchString}
                     onChange={e => setSearchString(e.target.value)}
                     type="text" 
                     placeholder="Where do you want to go?" 
-                    className="rounded-full flex-1 input bg-base-200" />
+                    className="rounded-full flex-1 input bg-base-200 text-xl" />
                 {
                     locationSearchResults.length > 0 && (
                         <div className="absolute rounded-lg left-0 right-0 transform translate-y-full flex flex-col bg-base-100 z-20 shadow-lg gap-1">
@@ -80,11 +80,11 @@ export default function BookForm({ onSubmit }: Props) {
                         </div>
                 )}
             </div>
-            <div className="h-min form-control col-span-3">
+            <div className="h-min form-control  col-span-3">
                 <label className="label">
-                    <span className="label-text">Preferred pickup time</span>
+                    <span className="label-text text-2xl">Preferred pickup time</span>
                 </label> 
-                <input type="time" placeholder="time" className="input input-bordered"></input>
+                <input type="time" placeholder="time" className="input input-bordered "></input>
             </div>
             {/* <div className="h-min form-control col-span-3">
                 <label className="label">
@@ -97,7 +97,7 @@ export default function BookForm({ onSubmit }: Props) {
                 </select>
             </div> */}
             <div className="flex-1 col-span-full h-full" />
-            <button type="submit" className="btn btn-warning col-span-full">
+            <button type="submit" className="btn btn-warning col-span-full h-1/2" >
                 Search
             </button>
         </form>
