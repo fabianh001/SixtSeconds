@@ -28,7 +28,11 @@ const formReducer = (currentValue: BookingRequest, action: FormReduceAction): Bo
     });
 };
 
-export default function BookForm() {
+type Props = {
+    onSubmit: (event: BookingRequest) => void
+};
+
+export default function BookForm({ onSubmit }: Props) {
     const [formValue, dispatch] = useReducer(formReducer, defaultBookingRequest);
     const [searchString, setSearchString] = useState('');
     const [debouncedSearchString, isDebouncing] = useDebounce(searchString, 1000);
@@ -49,8 +53,9 @@ export default function BookForm() {
 
     const onSubmitBooking = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log({ formValue });
-    }
+        onSubmit(formValue);
+    };
+
     return (
         <form onSubmit={onSubmitBooking} className="grid grid-cols-6 gap-2 w-full h-full">
             <div className="max-h-16 relative px-2 col-span-full flex items-center gap-2">
@@ -63,7 +68,7 @@ export default function BookForm() {
                     className="rounded-full flex-1 input bg-base-200" />
                 {
                     locationSearchResults.length > 0 && (
-                        <div className="mt-2 absolute rounded-lg left-0 right-0 transform translate-y-full flex flex-col bg-base-100 z-20 shadow-lg gap-1">
+                        <div className="absolute rounded-lg left-0 right-0 transform translate-y-full flex flex-col bg-base-100 z-20 shadow-lg gap-1">
                             {locationSearchResults.map(result => (
                                 <div
                                     key={result.place_id} 
