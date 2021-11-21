@@ -68,7 +68,7 @@ export default function ThirdPage({ selectedVehicle, onReturn, onConfirm }: Prop
           </span>
       <div className="flex justify-end items-center gap-4 font-bold">
         Total:
-        <div className="rounded-box text-4xl font-bold text-success">{ selectedVehicle?.price ?? 0 + insurancePrice }€</div>
+        <div className="rounded-box text-4xl font-bold text-success">{ selectedVehicle?.price && selectedVehicle?.price + insurancePrice }€</div>
       </div>
       <button onClick={onConfirm} className="btn btn-block btn-warning">Order now!</button>
     </div>
