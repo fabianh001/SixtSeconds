@@ -34,32 +34,32 @@ export default function ThirdPage({ selectedVehicle, onReturn, onConfirm }: Prop
       <div className="flex flex-col gap-2 flex-1 flex-shrink-0 overflow-auto">
         <InsuranceOfferTile onSelect={selectInsurance(2)} selected={insurancePrice === 2} title="Basic Coverage" price={2} insuranceItems={[
           {
-            delay: 60,
-            refundPercentage: 50
+            delay: 15,
+            refundPercentage: 20
           }
         ]}/>
         <InsuranceOfferTile onSelect={selectInsurance(5)} selected={insurancePrice === 5} title="Advance Coverage" price={5} insuranceItems={[
           {
-            delay: 60,
-            refundPercentage: 75
+            delay: 15,
+            refundPercentage: 50
           },
           {
-            delay: 30,
-            refundPercentage: 50
+            delay: 5,
+            refundPercentage: 10
           },
         ]}/>
         <InsuranceOfferTile onSelect={selectInsurance(10)} selected={insurancePrice === 10} title="Ultimate Coverage" price={10} insuranceItems={[
           {
-            delay: 60,
+            delay: 15,
             refundPercentage: 100
           },
           {
-            delay: 30,
-            refundPercentage: 75
+            delay: 10,
+            refundPercentage: 50
           },
           {
-            delay: 15,
-            refundPercentage: 25
+            delay: 5,
+            refundPercentage: 30
           },
         ]}/>
       </div>
