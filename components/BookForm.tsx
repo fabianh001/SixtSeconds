@@ -116,7 +116,7 @@ export default function BookForm({ onSubmit }: Props) {
       )}
       <button
         type="submit"
-        disabled={!hasTime}
+        // disabled={!hasTime}
         className="btn btn-warning absolute w-full padding bottom-0 "
       >
         Search
