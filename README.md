@@ -2,6 +2,10 @@
 
 Code of SixtSeconds team for HackaTUM 2021.
 
+Presentation link: https://www.youtube.com/watch?v=_rWHV9UhLBE
+
+Link of Instagram post: https://www.instagram.com/p/CXOosbDoSkN/
+
 
 ## Proposed insurance formula
 
