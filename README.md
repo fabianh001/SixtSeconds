@@ -2,6 +2,8 @@
 
 Code of SixtSeconds team for HackaTUM 2021.
 
+DevPost link: https://devpost.com/software/sixtseconds
+
 Presentation link: https://www.youtube.com/watch?v=_rWHV9UhLBE
 
 Link of Instagram post: https://www.instagram.com/p/CXOosbDoSkN/
